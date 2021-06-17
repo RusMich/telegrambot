@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class TimerService {
 
+
     @Autowired
     TelegramBot telegramBot;
-
 
     public void timer(String[] words, Long chatId, String userName) {
 
@@ -33,13 +33,13 @@ public class TimerService {
                 if (words.length == 2 || words.length == 3) {
 
                     if (d) {
-                        returnSecond(chatId, userName, userTimer, time, " секунду", " секунду окончен");
+                        returnTime(chatId, userName, userTimer, time, " секунду", " секунду окончен");
                     } else if (i > 11 && i < 15) {
-                        returnSecond(chatId, userName, userTimer, time, " секунд", " секунд окончен");
+                        returnTime(chatId, userName, userTimer, time, " секунд", " секунд окончен");
                     } else if (b) {
-                        returnSecond(chatId, userName, userTimer, time, " секунды", " секунды окончен");
+                        returnTime(chatId, userName, userTimer, time, " секунды", " секунды окончен");
                     } else {
-                        returnSecond(chatId, userName, userTimer, time, " секунд", " секунд окончен");
+                        returnTime(chatId, userName, userTimer, time, " секунд", " секунд окончен");
                     }
                 }
             } else if (words.length == 3 &&
@@ -51,47 +51,37 @@ public class TimerService {
                 long time = userTimer * 600_00L;
 
                 if (d) {
-                    returnMinute(chatId, userName, userTimer, time, " минуту", " минуту окончен");
+                    returnTime(chatId, userName, userTimer, time, " минуту", " минуту окончен");
                 } else if (i > 11 && i < 15) {
-                    returnMinute(chatId, userName, userTimer, time, " минут", " минут окончен");
+                    returnTime(chatId, userName, userTimer, time, " минут", " минут окончен");
                 } else if (b) {
-                    returnMinute(chatId, userName, userTimer, time, " минуты", " минуты окончен");
+                    returnTime(chatId, userName, userTimer, time, " минуты", " минуты окончен");
                 } else {
-                    returnMinute(chatId, userName, userTimer, time, " минут", " минут окончен");
+                    returnTime(chatId, userName, userTimer, time, " минут", " минут окончен");
                 }
             }
         }
     }
 
-    private void returnSecond(Long chatId, String userName, long userTimer, long time, String s, String s2) {
-        getMessage(chatId, userTimer, s);
-        sleep(time);
-        getSendMessage(chatId, userName, userTimer, s2);
-    }
-
-    private void returnMinute(Long chatId, String userName, long userTimer, long time, String s, String s2) {
-        getMessage(chatId, userTimer, s);
-        sleep(time);
-        getMessageMinutes(chatId, userName, userTimer, s2);
-    }
-
-    private void getMessageMinutes(Long chatId, String userName, long userTimer, String s) {
-        telegramBot.sendMessage("@" + userName + " Таймер на " + userTimer + s, chatId);
-    }
-
-    private void getMessage(Long chatId, long userTimer, String s) {
+    private void getMessageStart(Long chatId, long userTimer, String s) {
         telegramBot.sendMessage("Таймер установлен на " + userTimer + s, chatId);
     }
 
-    private void getSendMessage(Long chatId, String userName, long userTimer, String s) {
-        getMessageMinutes(chatId, userName, userTimer, s);
+    private void getMessageEnd(Long chatId, String userName, long userTimer, String s) {
+        telegramBot.sendMessage("@" + userName + " Таймер на " + userTimer + s, chatId);
+    }
+
+    private void returnTime(Long chatId, String userName, long userTimer, long time, String s, String s2) {
+        getMessageStart(chatId, userTimer, s);
+        sleep(time);
+        getMessageEnd(chatId, userName, userTimer, s2);
     }
 
     private void sleep(long time) {
         try {
             Thread.sleep(time);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+           e.printStackTrace();
         }
     }
 }
