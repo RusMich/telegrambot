@@ -25,7 +25,7 @@ public class TimerService {
                     long time = userTimer * 1000L;
                     //Склонение секунд.
                     if (words.length == 2 || words.length == 3) {
-                        if (Integer.parseInt(new String(words[1].toCharArray())) == 1) {
+                        if ((Integer.parseInt(new String(words[1].toCharArray())) % 10) == 1 && ((((Integer.parseInt(new String(words[1].toCharArray())) / 10)) % 10) != 1)) {
                             telegramBot.sendMessage("Таймер установлен на " + userTimer + " секунду", chatId);
                             try {
                                 Thread.sleep(time);   //тестовое время 20 секунд, проблема способа, в том что нету мультипоточности
@@ -65,7 +65,7 @@ public class TimerService {
                 } else if (words.length == 3 && words[2].equals("мин") || words[2].equals("минут") || words[2].equals("минуты")) {
                     long time = userTimer * 600_00L;
                     //склонение минут
-                    if (Integer.parseInt(new String(words[1].toCharArray())) == 1) {
+                    if ((Integer.parseInt(new String(words[1].toCharArray())) % 10) == 1 && ((((Integer.parseInt(new String(words[1].toCharArray())) / 10)) % 10) != 1)) {
                         telegramBot.sendMessage("Таймер установлен на " + userTimer + " минуту", chatId);
                         try {
                             Thread.sleep(time);   //тестовое время 20 секунд, проблема способа, в том что нету мультипоточности
