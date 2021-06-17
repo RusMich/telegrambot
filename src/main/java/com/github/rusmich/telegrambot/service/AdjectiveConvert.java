@@ -75,10 +75,10 @@ public class AdjectiveConvert {
             if (str4.equals("йц") || str4.equals("ик") || str4.equals("иц") && !word.equals("куриц")) {
                 word = removeLastCharTwo(word);
                 word = word + "ичный";
-            } else if (str4.equals("ов") && !word.equals("лавров") && !word.equals("овсянк") || str4.equals("еб")
-                    && !word.equals("оливков") || str4.equals("он") && !word.equals("дайкон") || str4.equals("яж") ||
-                    str4.equals("оп") || word.equals("капуст") || word.equals("виноград") || str4.equals("вн")
-                    || str4.equals("рс") || word.equals("витамин") || str4.equals("ят")) {
+            } else if (str4.equals("ов") && !word.equals("лавров") && !word.equals("овсянк") || str4.equals("еб") || str4.equals("ор")
+                    && !word.equals("оливков") || str4.equals("он") && !word.equals("дайкон") || str4.equals("яж") || str4.equals("ыб")
+                    || str4.equals("оп") || word.equals("капуст") || word.equals("виноград") || str4.equals("вн")
+                    || str4.equals("рс") || word.equals("витамин") || str4.equals("ят") || str4.equals("ом")) {
                 word = word + "ный";
             } else if (word.equals("картошк") || word.equals("картофел") || word.equals("картох") || word.equals("потат") || word.equals("бульб")) {
                 word = "картофельный";
@@ -89,7 +89,7 @@ public class AdjectiveConvert {
             } else if (word.equals("овсянк")) {
                 word = removeLastCharOne(word);
                 word = word + "ый";
-            } else if (word.equals("лавров") || str4.equals("яв")) {
+            } else if (word.equals("лавров") || str4.equals("яв") || str4.equals("сн")) {
                 word = word + "ый";
             } else if (str4.equals("нк") || str4.equals("дк") || str4.equals("ск") && !word.equals("боварск")) {
                 word = removeLastCharOne(word);
@@ -117,8 +117,8 @@ public class AdjectiveConvert {
                 word = removeLastCharOne(word);
                 word = word + "чной";
             } else if (str4.equals("жж") || str4.equals("ил") || str4.equals("ел") || str4.equals("бл") || str4.equals("чн")
-                    || str4.equals("рр") || str4.equals("ол") && !word.equals("гранол") || str4.equals("лт")
-                    || str4.equals("уш") || str4.equals("зд") || str4.equals("рш") || word.equals("женьшен")) {
+                    || str4.equals("рр") || str4.equals("ол") && !word.equals("гранол") || str4.equals("лт") || str4.equals("рц")
+                    || str4.equals("уш") || str4.equals("зд") || str4.equals("рш") || word.equals("женьшен") || str4.equals("рщ")) {
                 word = word + "евый";
             } else if (str4.equals("шн")) {
                 word = word + "ёвый";
@@ -131,13 +131,13 @@ public class AdjectiveConvert {
                 word = word + "чёный";
             } else if (str4.equals("юм") || str4.equals("аг") || str4.equals("ин")
                     && !word.equals("свинин") || word.equals("гранол") || word.equals("дайкон")
-                    || str4.equals("ул") || str4.equals("йв") || str4.equals("ыч") || str4.equals("ут")
-                    || str4.equals("ас") || str4.equals("ус") || str4.equals("рб") || str4.equals("их")
+                    || str4.equals("ул") || str4.equals("йв") || str4.equals("ыч") || str4.equals("ут") || str4.equals("тк")
+                    || str4.equals("ас") || str4.equals("ус") || str4.equals("рб") || str4.equals("их") || str4.equals("эт")
                     || str4.equals("ст") || str4.equals("уп") || str4.equals("шк") || str4.equals("ан") //питаниевый
                     || str4.equals("ос") || str4.equals("нт") || str4.equals("ох") || str4.equals("ыш")
-                    || str4.equals("ад") || str4.equals("гл") || str4.equals("от") || str4.equals("рт")
+                    || str4.equals("ад") || str4.equals("гл") || str4.equals("от") || str4.equals("рт") || str4.equals("бк")
                     || str4.equals("пш") || str4.equals("об") && !word.equals("звероб") || word.equals("гранат")
-                    || str4.equals("ис") || str4.equals("ех") || str4.equals("кт") || str4.equals("ка")
+                    || str4.equals("ис") || str4.equals("ех") || str4.equals("кт") || str4.equals("ка") || str4.equals("ив")
                     || str4.equals("вр") || str4.equals("йк") || str4.equals("сл") && !word.equals("черносл")) {
                 word = word + "овый";
             } else if (str4.equals("га")) {
@@ -177,6 +177,8 @@ public class AdjectiveConvert {
                 word = word + "чный";
             } else if (str4.equals("гу")) {
                 word = word + "синый";
+            } else if (str4.equals("кл")) {
+                word = word + "яной";
             }
 
         }
