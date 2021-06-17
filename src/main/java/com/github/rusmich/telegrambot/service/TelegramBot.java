@@ -12,10 +12,6 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Dictionary;
-import java.util.Hashtable;
-
 @Component
 @PropertySource("application.properties")
 public class TelegramBot extends TelegramLongPollingBot {
@@ -65,8 +61,8 @@ public class TelegramBot extends TelegramLongPollingBot {
                 sendLocation(chatId);
             }
           
-            //метод по таймеру и склонению слов
-            timerService.timerCorrectWords(words, chatId, userName);
+            //метод по таймеру
+            timerService.timer(words, chatId, userName);
               
             if (words.length > 3) {
                 if (words[0].equals("что") && words[1].equals("приготовить") && words[2].equals("из")) {
